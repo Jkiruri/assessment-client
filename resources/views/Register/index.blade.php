@@ -51,7 +51,7 @@
                                     src="{{ asset('landing/img/logo-29.png') }}" alt="Logo"></a>
                         </div>
                         <!-- Alert container -->
-<div id="alert-container"></div>
+                        <div id="alert-container"></div>
 
                         {{-- <div class="alert alert-success" role="alert">
                             A simple success alert—check it out!
@@ -142,62 +142,62 @@
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('register-form');
-    var registerButton = document.getElementById('register-button');
-    var alertContainer = document.getElementById('alert-container');
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('register-form');
+            var registerButton = document.getElementById('register-button');
+            var alertContainer = document.getElementById('alert-container');
 
-    registerButton.addEventListener('click', function (event) {
-        event.preventDefault();
+            registerButton.addEventListener('click', function(event) {
+                event.preventDefault();
 
-        var formData = new FormData(form);
-        var fallbackUrl = formData.get('fallback_url');
+                var formData = new FormData(form);
+                var fallbackUrl = formData.get('fallback_url');
 
-        fetch(fallbackUrl, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+                fetch(fallbackUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            return response.json().then(function(errorData) {
+                                throw new Error(errorData.error);
+                            });
+                        }
+                    })
+                    .then(function(data) {
+                        // Show success message and redirect to login page
+                        var successAlert = document.createElement('div');
+                        successAlert.className = 'alert alert-success alert-dismissible fade show';
+                        successAlert.role = 'alert';
+                        successAlert.innerHTML =
+                            'Registration successful! Redirecting to login page... ' +
+                            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                        alertContainer.appendChild(successAlert);
+                        setTimeout(function() {
+                            window.location.href = '/login';
+                        }, 2000); // Redirect after 2 seconds
+                    })
+                    .catch(function(error) {
+                        // Display error message
+                        console.error('Registration error:', error);
+                        showAlert('Error: ' + error.message, 'danger');
+                    });
+            });
+
+            function showAlert(message, type) {
+                var alert = document.createElement('div');
+                alert.className = 'alert alert-' + type + ' alert-dismissible fade show';
+                alert.role = 'alert';
+                alert.innerHTML = message +
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+                alertContainer.appendChild(alert);
             }
-        })
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                return response.json().then(function (errorData) {
-                    throw new Error(errorData.error);
-                });
-            }
-        })
-        .then(function (data) {
-    // Show success message and redirect to login page
-    var successAlert = document.createElement('div');
-    successAlert.className = 'alert alert-success alert-dismissible fade show';
-    successAlert.role = 'alert';
-    successAlert.innerHTML = 'Registration successful! Redirecting to login page... ' +
-        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-    alertContainer.appendChild(successAlert);
-    setTimeout(function () {
-        window.location.href = '/login';
-    }, 2000); // Redirect after 2 seconds
-})
-        .catch(function (error) {
-            // Display error message
-            console.error('Registration error:', error);
-            showAlert('Error: ' + error.message, 'danger');
         });
-    });
-
-    function showAlert(message, type) {
-        var alert = document.createElement('div');
-        alert.className = 'alert alert-' + type + ' alert-dismissible fade show';
-        alert.role = 'alert';
-        alert.innerHTML = message + 
-            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        alertContainer.appendChild(alert);
-    }
-});
-
     </script>
 
 

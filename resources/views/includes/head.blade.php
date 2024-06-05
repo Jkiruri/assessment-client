@@ -14,7 +14,7 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
-	<title>Stan Logistics</title>
+	<title>SIL ASSESSMENT</title>
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="{{ asset('landing/img/favicon.ico') }}">
