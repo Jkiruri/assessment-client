@@ -64,10 +64,10 @@ class AuthController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:8|confirmed',
         ]);
-
+    
         try {
             // Make the request to the API to register the user
             $response = Http::post(env('API_BASE_URL') . 'register', [
@@ -77,20 +77,19 @@ class AuthController extends Controller
                 'password' => $request->password,
                 'password_confirmation' => $request->password_confirmation,
             ]);
-
+    
             // Check if registration was successful
             if ($response->successful()) {
-                return response()->json(['message' => 'Registration successful', 'redirectUrl' => '/login'], 200);
+                return response()->json(['message' => 'Registration successful'], 200);
             }
-
+    
             // If registration failed, return JSON response with error message from the API
             $errorMessage = $response->json()['message'] ?? 'Registration failed. Please check your data and try again.';
             return response()->json(['error' => $errorMessage], 422);
         } catch (\Exception $e) {
             // Log the error or handle it as needed
-            Log::error('Registration error: ' . $e->getMessage());
             return response()->json(['error' => 'Server error: ' . $e->getMessage()], 500);
         }
     }
-
+    
 }
