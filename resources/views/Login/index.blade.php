@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Stan Logistics</title>
+    <title>SIL ASSESSMENT</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -46,6 +46,7 @@
                     data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "{{ asset('landing/img/figure/bg29-l-1.jpg') }}"}, {"src": "{{ asset('landing/img/figure/bg29-l-2.jpg') }}"}, {"src": "{{ asset('landing/img/figure/bg29-l-3.jpg') }}"}]}'>
                     <div class="fxt-page-switcher">
                         <a href="login-29.html" class="switcher-text1 active">Login</a>
+                        <a href="https://affixtheme.com/html/xmee/demo/register-29.html" class="switcher-text1">Register</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 fxt-bg-color">
