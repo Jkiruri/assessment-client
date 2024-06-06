@@ -95,7 +95,7 @@
                             <a href="javascript:void(0);">Albums</a>
                         </li>
                         <li class="slide">
-                            <a href="{{ url('/contacts') }}" class="side-menu__item">Album List</a>
+                            <a href="{{ url('/albums') }}" class="side-menu__item">Album List</a>
                         </li>
                         
 

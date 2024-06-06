@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -27,3 +28,5 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/albums', [AlbumController::class, 'index']);

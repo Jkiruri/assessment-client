@@ -9,15 +9,15 @@
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-[0.813rem] ps-[0.5rem]">
                 <a class="flex items-center text-primary hover:text-primary dark:text-primary truncate"
-                    href="javascript:void(0);">
-                    CRM
+                    href="{{ url('/') }}">
+                    Home
                     <i
                         class="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
                 </a>
             </li>
             <li class="text-[0.813rem] text-defaulttextcolor font-semibold hover:text-primary dark:text-[#8c9097] dark:text-white/50 "
                 aria-current="page">
-                Users
+                Albums
             </li>
         </ol>
     </div>
@@ -28,7 +28,7 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Download DataTable</h5>
+                    <h5 class="box-title">Albums</h5>
                 </div>
                 <div class="box-body space-y-3">
                     <div class="download-data">
@@ -46,69 +46,29 @@
                                         <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
                                     </th>
                                     <th scope="col" class="text-start">Id</th>
-                                    <th scope="col" class="text-start">Name</th>
-                                    <th scope="col" class="text-start">Username</th>
-                                    <th scope="col" class="text-start">Email</th>
-                                    <th scope="col" class="text-start">Address</th>
-                                    <th scope="col" class="text-start">Phone Number</th>
-                                    <th scope="col" class="text-start">Website</th>
-                                    <th scope="col" class="text-start">Company</th>
-                                    <th scope="col" class="text-start">Actions</th>
+                                    <th scope="col" class="text-start">Title</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($responseData as $user)
+                                @foreach ($responseData as $album)
                                 <tr class="border border-x-0 border-defaultborder crm-contact">
                                     <td>
                                         <input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
                                     </td>
-                                    <td>{{ $user['id'] }}</td>
+                                    <td>{{ $album['id'] }}</td>
                                     <td>
                                         <div class="flex items-center gap-2">
                                             
                                             <div>
-                                                <a href="{{ route('profile', ['id' => $user['id']]) }}" data-hs-overlay="#hs-overlay-contacts">
-                                                    <span class="block font-semibold">{{ $user['name'] }}</span>
+                                                <a href="{{ route('profile', ['id' => $album['id']]) }}" data-hs-overlay="#hs-overlay-contacts">
+                                                    <span class="block font-semibold">{{ $album['title'] }}</span>
                                                 </a>
                                                 
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $user['username'] }}</td>
-                                    <td>
-                                        <div>
-                                            <span class="block mb-1">
-                                                <i class="ri-mail-line me-2 align-middle text-[.875rem] text-[#8c9097] dark:text-white/50 inline-flex"></i>{{ $user['email'] }}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span class="block">{{ $user['address']['street'] }}</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span class="block">
-                                                <i class="ri-phone-line me-2 align-middle text-[.875rem] text-[#8c9097] dark:text-white/50 inline-flex"></i>{{ $user['phone'] }}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>{{ $user['website'] }}</td>
-                                    <td>{{ $user['company']['name'] }}</td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-warning ti-btn-icon" data-hs-overlay="#hs-overlay-contacts">
-                                                <i class="ri-eye-line"></i>
-                                            </button>
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-info ti-btn-icon">
-                                                <i class="ri-pencil-line"></i>
-                                            </button>
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-danger ti-btn-icon contact-delete">
-                                                <i class="ri-delete-bin-line"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>

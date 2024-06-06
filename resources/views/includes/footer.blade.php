@@ -158,7 +158,7 @@
 <script src="{{ asset('assets/libs/xlsx/xlsx.full.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jspdf/jspdf.umd.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jspdf-autotable/jspdf.plugin.autotable.min.js') }}"></script>
-<link rel="modulepreload" href="{{ asset('assets/datatable-d0054720.js') }}" /><script type="module" src="{{ asset('assets/datatable-d0054720.js') }}"></script>  
+{{-- <link rel="modulepreload" href="{{ asset('assets/datatable-d0054720.js') }}" /><script type="module" src="{{ asset('assets/datatable-d0054720.js') }}"></script>   --}}
 
 <!-- CRM Contacts JS -->
 <link rel="modulepreload" href="{{ asset('assets/crm-contacts-9883390a.js') }}" /><script type="module" src="{{ asset('assets/crm-contacts-9883390a.js') }}"></script>
