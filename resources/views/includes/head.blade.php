@@ -1,61 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="">
-	<meta name="author" content="">
-	<meta name="robots" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="JHRM">
-	<meta property="og:title" content="JHRM">
-	<meta property="og:description" content="JHRM">
-	
-	<meta name="format-detection" content="telephone=no">
-	
-	<!-- PAGE TITLE HERE -->
-	<title>SIL ASSESSMENT</title>
-	
-	<!-- FAVICONS ICON -->
-	<link rel="shortcut icon" type="image/png" href="{{ asset('landing/img/favicon.ico') }}">
-	
+    <!-- META DATA -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Author" content="JCRM" />
+    <meta name="Description" content="Laravel Tailwind CSS Responsive Admin CRM" />
+    <meta name="keywords"
+        content="admin panel in laravel, tailwind, tailwind template admin, laravel admin panel, tailwind css dashboard, admin dashboard template, admin template, tailwind laravel, template dashboard, admin panel tailwind, tailwind css admin template, laravel tailwind template, laravel tailwind, tailwind admin dashboard" />
+
+    <!-- TITLE -->
+    <title>SIL ASSESSMENT</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="{{ asset('assets/images/brand-logos/favicon.ico') }}" type="image/x-icon" />
+
+    <!-- ICONS CSS -->
+    <link href="{{ asset('assets/iconfonts/icons.css') }}" rel="stylesheet" />
 
 
-	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
-	<link href="{{ asset('assets/css/material-icons.css') }}" rel="stylesheet">
+    <!-- APP SCSS -->
+    <link rel="preload" as="style" href="{{ asset('assets/app-6b44ca98.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/app-6b44ca98.css') }}" />
 
-	<link href="{{ asset('assets/vendor/jvmap/jquery-jvectormap.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/buttons.dataTables.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-	
-	<link href="{{ asset('assets/css/swiper-bundle.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendor/tagify/dist/tagify.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
-	
+    <!-- SIMPLEBAR CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/simplebar/simplebar.min.css') }}" />
+
+    <!-- COLOR PICKER CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/libs/@simonwep/pickr/themes/nano.min.css') }}" />
+
+    <!-- MAIN JS -->
+    <script src="{{ asset('assets/main.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/libs/tabulator-tables/css/tabulator.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/choices.js/public/assets/styles/choices.min.css') }}">
+{{-- 
+    <link href="{{ asset('assets/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/buttons.dataTables.min.css') }}" rel="stylesheet"> --}}
+
+    <script src="{{ asset('assets/axios.min.js') }}"></script>
+    <!-- In your Blade template -->
+
+    <!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<!-- DataTables Buttons CSS and JS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<!-- DataTables Buttons CSS and JS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 
 
-
-
-	<link href="{{ asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-	<script src="{{ asset('assets/js/axios.min.js') }}"></script>
-	
-
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
-    
-	
 </head>
-<body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-  <div id="preloader">
-		<div class="lds-ripple">
-			<div></div>
-			<div></div>
-		</div>
-    </div>
-	
