@@ -142,41 +142,83 @@
 <script src="{{ asset('assets/libs/@simonwep/pickr/pickr.es5.min.js') }}"></script>
 
 <!-- SWITCH JS -->
-<link rel="modulepreload" href="{{ asset('assets/switch-8d0a5268.js') }}" /><script type="module" src="{{ asset('assets/switch-8d0a5268.js') }}"></script>
+<link rel="modulepreload" href="{{ asset('assets/switch-8d0a5268.js') }}" />
+<script type="module" src="{{ asset('assets/switch-8d0a5268.js') }}"></script>
 
 <!-- SIMPLEBAR JS -->
 <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-
+<script src="{{ asset('assets/libs/tabulator-tables/js/tabulator.min.js') }}"></script>
 <!-- Choices JS -->
 <script src="{{ asset('assets/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
 <!-- Flat Picker JS -->
-<script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 
-<script src="{{ asset('assets/libs/tabulator-tables/js/tabulator.min.js') }}"></script>
+
+
 
 <script src="{{ asset('assets/libs/xlsx/xlsx.full.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jspdf/jspdf.umd.min.js') }}"></script>
 <script src="{{ asset('assets/libs/jspdf-autotable/jspdf.plugin.autotable.min.js') }}"></script>
-{{-- <link rel="modulepreload" href="{{ asset('assets/datatable-d0054720.js') }}" /><script type="module" src="{{ asset('assets/datatable-d0054720.js') }}"></script>   --}}
+{{-- <link rel="modulepreload" href="{{ asset('assets/datatable-d0054720.js') }}" /><script type="module" src="{{ asset('assets/datatable-d0054720.js') }}"></script>  
+ --}}
+<script src="{{ asset('assets/sticky.js') }}"></script>
 
-<!-- CRM Contacts JS -->
-<link rel="modulepreload" href="{{ asset('assets/crm-contacts-9883390a.js') }}" /><script type="module" src="{{ asset('assets/crm-contacts-9883390a.js') }}"></script>
 
 
 <!-- STICKY JS -->
-<script src="{{ asset('assets/sticky.js') }}"></script>
+
 
 <!-- APP JS -->
-<link rel="modulepreload" href="{{ asset('assets/app-cff42aa7.js') }}" /><script type="module" src="{{ asset('assets/app-cff42aa7.js') }}"></script>
+<link rel="modulepreload" href="{{ asset('assets/app-cff42aa7.js') }}" />
+<script type="module" src="{{ asset('assets/app-cff42aa7.js') }}"></script>
 
 <!-- CUSTOM-SWITCHER JS -->
-<link rel="modulepreload" href="{{ asset('assets/custom-switcher-508a7845.js') }}" /><script type="module" src="{{ asset('assets/custom-switcher-508a7845.js') }}"></script>
+<link rel="modulepreload" href="{{ asset('assets/custom-switcher-508a7845.js') }}" />
+<script type="module" src="{{ asset('assets/custom-switcher-508a7845.js') }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Tabulator table
+        var downloadTable = new Tabulator("#download-table", {
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [5, 10, 15, 20, 25],
+            paginationCounter: "rows",
+            movableColumns: true,
+            reactiveData: true,
+            columns: [
+                { title: "ID", field: "id", sorter: "number" },
+                { title: "Name", field: "name", sorter: "string", formatter: "html" },
+                { title: "Username", field: "username", sorter: "string" },
+                { title: "Email", field: "email", sorter: "string" },
+                { title: "Address", field: "address", sorter: "string" },
+                { title: "Phone Number", field: "phone", sorter: "string" },
+                { title: "Website", field: "website", sorter: "string" },
+                { title: "Company", field: "company", sorter: "string" }
+            ],
+        });
 
-<!-- END SCRIPTS -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+        // Add event listeners for download buttons
+        document.getElementById("download-csv").addEventListener("click", function () {
+            downloadTable.download("csv", "data.csv");
+        });
+
+        document.getElementById("download-json").addEventListener("click", function () {
+            downloadTable.download("json", "data.json");
+        });
+
+        document.getElementById("download-xlsx").addEventListener("click", function () {
+            downloadTable.download("xlsx", "data.xlsx", { sheetName: "Albums" });
+        });
+
+        document.getElementById("download-pdf").addEventListener("click", function () {
+            downloadTable.download("pdf", "data.pdf", { orientation: "landscape", title: "Album Data" });
+        });
+
+        document.getElementById("download-html").addEventListener("click", function () {
+            downloadTable.download("html", "data.html", { style: true });
+        });
+    });
+</script>
 </body>
 </html>

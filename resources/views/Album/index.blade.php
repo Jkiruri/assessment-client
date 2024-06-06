@@ -2,23 +2,19 @@
 <html lang="en" dir="ltr" data-nav-layout="vertical" class="light" data-header-styles="light"
     data-menu-styles="dark">
 
-<head>
-
+<<head>
     <!-- META DATA -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Author" content="Spruko Technologies Private Limited">
-    <meta name="Description" content="Laravel Tailwind CSS Responsive Admin Web Dashboard Template">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Author" content="JCRM" />
+    <meta name="Description" content="Laravel Tailwind CSS Responsive Admin CRM" />
     <meta name="keywords"
-        content="admin panel in laravel, tailwind, tailwind template admin, laravel admin panel, tailwind css dashboard, admin dashboard template, admin template, tailwind laravel, template dashboard, admin panel tailwind, tailwind css admin template, laravel tailwind template, laravel tailwind, tailwind admin dashboard">
+        content="admin panel in laravel, tailwind, tailwind template admin, laravel admin panel, tailwind css dashboard, admin dashboard template, admin template, tailwind laravel, template dashboard, admin panel tailwind, tailwind css admin template, laravel tailwind template, laravel tailwind, tailwind admin dashboard" />
 
     <!-- TITLE -->
-    <title> YNEX - Laravel Tailwind CSS Admin & Dashboard Template </title>
+    <title>SIL ASSESSMENT</title>
 
     <!-- FAVICON -->
-    <link rel="icon" href="{{ asset('assets/images/brand-logos/favicon.ico') }}" type="image/x-icon">
-
-    <!-- ICONS CSS -->
     <link href="{{ asset('assets/iconfonts/icons.css') }}" rel="stylesheet">
 
     <!-- APP SCSS -->
@@ -44,6 +40,7 @@
 
 
 </head>
+
 
 <body>
 
@@ -991,20 +988,20 @@
                     <div>
                         <h3
                             class="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold">
-                            Data Tables</h3>
+                            </h3>
                     </div>
                     <ol class="flex items-center whitespace-nowrap min-w-0">
                         <li class="text-[0.813rem] ps-[0.5rem]">
                             <a class="flex items-center text-primary hover:text-primary dark:text-primary truncate"
-                                href="javascript:void(0);">
-                                Tables
+                                href="{{ url('/') }}">
+                                Home
                                 <i
                                     class="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
                             </a>
                         </li>
                         <li class="text-[0.813rem] text-defaulttextcolor font-semibold hover:text-primary dark:text-[#8c9097] dark:text-white/50 "
                             aria-current="page">
-                            Data Tables
+                            Albums
                         </li>
                     </ol>
                 </div>
@@ -1022,7 +1019,7 @@
                     <div class="col-span-12">
                         <div class="box">
                             <div class="box-header">
-                                <h5 class="box-title">Download DataTable</h5>
+                                <h5 class="box-title">Albums</h5>
                             </div>
                             <div class="box-body space-y-3">
                                 <div class="download-data">
@@ -1038,7 +1035,7 @@
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Title</th>
-                                                <th scope="col">User ID</th>
+                                                
                                                 
                                             </tr>
                                         </thead>
@@ -1049,7 +1046,7 @@
                                                 <td>
                                                     {{ $album['title'] }}
                                                 </td>
-                                                <td>{{ $album['userId'] }}</td>
+                                                
                                                 
                                             </tr>
                                             @endforeach
@@ -1279,7 +1276,7 @@ var downloadTable = new Tabulator("#download-table", {
     reactiveData: true,
     data: responseData, // Use responseData variable as the data source
     columns: [
-        { title: "User ID", field: "userId", sorter: "number" },
+        
         { title: "ID", field: "id", sorter: "number" },
         { title: "Title", field: "title", sorter: "string" }
     ]

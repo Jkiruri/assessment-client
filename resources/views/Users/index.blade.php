@@ -1,114 +1,66 @@
 @extends('layout.app')
 @section('content')
-    <div class="block justify-between page-header md:flex">
-        <div>
-            <h3
-                class="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold">
-                Users</h3>
-        </div>
-        <ol class="flex items-center whitespace-nowrap min-w-0">
-            <li class="text-[0.813rem] ps-[0.5rem]">
-                <a class="flex items-center text-primary hover:text-primary dark:text-primary truncate"
-                    href="javascript:void(0);">
-                    CRM
-                    <i
-                        class="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
-                </a>
-            </li>
-            <li class="text-[0.813rem] text-defaulttextcolor font-semibold hover:text-primary dark:text-[#8c9097] dark:text-white/50 "
-                aria-current="page">
-                Users
-            </li>
-        </ol>
+<div class="block justify-between page-header md:flex">
+    <div>
+        <h3
+            class="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold">
+            </h3>
     </div>
+    <ol class="flex items-center whitespace-nowrap min-w-0">
+        <li class="text-[0.813rem] ps-[0.5rem]">
+            <a class="flex items-center text-primary hover:text-primary dark:text-primary truncate"
+                href="j{{ url('/') }}">
+                Home
+                <i
+                    class="ti ti-chevrons-right flex-shrink-0 text-[#8c9097] dark:text-white/50 px-[0.5rem] overflow-visible rtl:rotate-180"></i>
+            </a>
+        </li>
+        <li class="text-[0.813rem] text-defaulttextcolor font-semibold hover:text-primary dark:text-[#8c9097] dark:text-white/50 "
+            aria-current="page">
+            Users
+        </li>
+    </ol>
+</div>
     <!-- Page Header Close -->
-
-    <!-- Start::row-1 -->
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Download DataTable</h5>
+                    <h5 class="box-title">Users</h5>
                 </div>
                 <div class="box-body space-y-3">
                     <div class="download-data">
                         <button type="button" class="ti-btn ti-btn-primary" id="download-csv">Download CSV</button>
-                        
-                        <button type="button" class="ti-btn ti-btn-primary" id="download-xlsx">Download EXCEL</button>
-                       
-                        <button type="button" class="ti-btn ti-btn-primary" id="download-html">Print</button>
+                        <button type="button" class="ti-btn ti-btn-primary" id="download-json">Download JSON</button>
+                        <button type="button" class="ti-btn ti-btn-primary" id="download-xlsx">Download XLSX</button>
+                        <button type="button" class="ti-btn ti-btn-primary" id="download-pdf">Download PDF</button>
+                        <button type="button" class="ti-btn ti-btn-primary" id="download-html">Download HTML</button>
                     </div>
                     <div class="overflow-hidden table-bordered">
-                        <table id="data-table" class="ti-custom-table ti-striped-table ti-custom-table-hover">
+                        <table id="download-table" class="ti-custom-table ti-striped-table ti-custom-table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                                    </th>
-                                    <th scope="col" class="text-start">Id</th>
-                                    <th scope="col" class="text-start">Name</th>
-                                    <th scope="col" class="text-start">Username</th>
-                                    <th scope="col" class="text-start">Email</th>
-                                    <th scope="col" class="text-start">Address</th>
-                                    <th scope="col" class="text-start">Phone Number</th>
-                                    <th scope="col" class="text-start">Website</th>
-                                    <th scope="col" class="text-start">Company</th>
-                                    <th scope="col" class="text-start">Actions</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Website</th>
+                                    <th scope="col">Company</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($responseData as $user)
-                                <tr class="border border-x-0 border-defaultborder crm-contact">
-                                    <td>
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
-                                    </td>
+                                <tr class="border border-x-0 border-defaultborder album-row">
                                     <td>{{ $user['id'] }}</td>
-                                    <td>
-                                        <div class="flex items-center gap-2">
-                                            
-                                            <div>
-                                                <a href="{{ route('profile', ['id' => $user['id']]) }}" data-hs-overlay="#hs-overlay-contacts">
-                                                    <span class="block font-semibold">{{ $user['name'] }}</span>
-                                                </a>
-                                                
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td>{!! '<div class="flex items-center gap-2"><div><a href="' . route('profile', ['id' => $user['id']]) . '" data-hs-overlay="#hs-overlay-contacts"><span class="block font-semibold">' . $user['name'] . '</span></a></div></div>' !!}</td>
                                     <td>{{ $user['username'] }}</td>
-                                    <td>
-                                        <div>
-                                            <span class="block mb-1">
-                                                <i class="ri-mail-line me-2 align-middle text-[.875rem] text-[#8c9097] dark:text-white/50 inline-flex"></i>{{ $user['email'] }}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span class="block">{{ $user['address']['street'] }}</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <span class="block">
-                                                <i class="ri-phone-line me-2 align-middle text-[.875rem] text-[#8c9097] dark:text-white/50 inline-flex"></i>{{ $user['phone'] }}
-                                            </span>
-                                        </div>
-                                    </td>
+                                    <td>{{ $user['email'] }}</td>
+                                    <td>{{ $user['address']['street'] }}</td>
+                                    <td>{{ $user['phone'] }}</td>
                                     <td>{{ $user['website'] }}</td>
                                     <td>{{ $user['company']['name'] }}</td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-warning ti-btn-icon" data-hs-overlay="#hs-overlay-contacts">
-                                                <i class="ri-eye-line"></i>
-                                            </button>
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-info ti-btn-icon">
-                                                <i class="ri-pencil-line"></i>
-                                            </button>
-                                            <button aria-label="button" type="button" class="ti-btn ti-btn-sm ti-btn-danger ti-btn-icon contact-delete">
-                                                <i class="ri-delete-bin-line"></i>
-                                            </button>
-                                        </div>
-                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -118,6 +70,8 @@
             </div>
         </div>
     </div>
+    <!-- Start::row-1 -->
+    
     
     
     
@@ -126,58 +80,7 @@
     
 
     
-<script>
-    $(document).ready(function() {
-    // Initialize DataTable without the extra buttons
-    var table = $('#data-table').DataTable({
-        paging: true,
-        dom: 'Bfrtip',
-        buttons: []
-    });
+    
 
-    // Custom button actions for exporting
-    $('#download-csv').on('click', function() {
-        table.button('.buttons-csv').trigger();
-    });
-
-    $('#download-json').on('click', function() {
-        var data = table.rows().data().toArray();
-        var json = JSON.stringify(data, null, 2);
-        var blob = new Blob([json], {type: "application/json"});
-        var url  = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.download = "data.json";
-        a.href = url;
-        a.textContent = "Download data.json";
-        a.click();
-    });
-
-    $('#download-xlsx').on('click', function() {
-        table.button('.buttons-excel').trigger();
-    });
-
-    $('#download-pdf').on('click', function() {
-        table.button('.buttons-pdf').trigger();
-    });
-
-    $('#download-html').on('click', function() {
-        table.button('.buttons-print').trigger();
-    });
-
-    // Add the DataTable export buttons to the table
-    new $.fn.dataTable.Buttons(table, {
-        buttons: [
-            { extend: 'csv', className: 'buttons-csv hidden' },
-            { extend: 'excel', className: 'buttons-excel hidden' },
-            { extend: 'pdf', className: 'buttons-pdf hidden' },
-            { extend: 'print', className: 'buttons-print hidden' }
-        ]
-    });
-
-    table.buttons().container().appendTo($('#data-table_wrapper .col-md-6:eq(0)'));
-});
-
-</script>
-
-    </style>
+    
 @endsection
