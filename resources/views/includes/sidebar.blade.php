@@ -101,23 +101,7 @@
 
                     </ul>
                 </li>
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="bx bx-fingerprint side-menu__icon"></i>
-                        <span class="side-menu__label">Albums</span>
-                        <i class="fe fe-chevron-right side-menu__angle"></i>
-                    </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
-                            <a href="javascript:void(0);">Albums</a>
-                        </li>
-                        <li class="slide">
-                            <a href="{{ url('/albums') }}" class="side-menu__item">Album List</a>
-                        </li>
-                        
-
-                    </ul>
-                </li>
+                
                 <!-- End::slide -->
 
                 
