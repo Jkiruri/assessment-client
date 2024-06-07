@@ -30,3 +30,4 @@ Route::get('/users', [UserController::class, 'index']);
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::get('/users', [UserController::class, 'index']);
 Route::get('/albums', [AlbumController::class, 'index']);
+Route::get('/album/{id}/photos', [AlbumController::class, 'showPhotos'])->name('album.photos');

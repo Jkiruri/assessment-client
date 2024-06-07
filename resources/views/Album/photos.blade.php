@@ -109,8 +109,8 @@
                     <p class="switcher-style-head">Navigation Styles:</p>
                     <div class="grid grid-cols-3  switcher-style">
                         <div class="flex items-center">
-                            <input type="radio" name="navigation-style" class="ti-form-radio"
-                                id="switcher-vertical" checked>
+                            <input type="radio" name="navigation-style" class="ti-form-radio" id="switcher-vertical"
+                                checked>
                             <label for="switcher-vertical"
                                 class="text-defaultsize text-defaulttextcolor dark:text-defaulttextcolor/70 ms-2  font-semibold">Vertical</label>
                         </div>
@@ -535,8 +535,8 @@
                                         class="toggle-logo" />
                                     <img src="{{ asset('assets/images/brand-logos/desktop-dark.png') }}"
                                         alt="logo" class="desktop-dark" />
-                                    <img src="{{ asset('assets/images/brand-logos/toggle-dark.png') }}" alt="logo"
-                                        class="toggle-dark" />
+                                    <img src="{{ asset('assets/images/brand-logos/toggle-dark.png') }}"
+                                        alt="logo" class="toggle-dark" />
                                     <img src="{{ asset('assets/images/brand-logos/desktop-white.png') }}"
                                         alt="logo" class="desktop-white" />
                                     <img src="{{ asset('assets/images/brand-logos/toggle-white.png') }}"
@@ -988,7 +988,7 @@
                     <div>
                         <h3
                             class="!text-defaulttextcolor dark:!text-defaulttextcolor/70 dark:text-white dark:hover:text-white text-[1.125rem] font-semibold">
-                            </h3>
+                        </h3>
                     </div>
                     <ol class="flex items-center whitespace-nowrap min-w-0">
                         <li class="text-[0.813rem] ps-[0.5rem]">
@@ -1011,7 +1011,7 @@
                 <!-- End::row-1 -->
 
                 <!-- Start::row-2 -->
-                
+
                 <!-- End::row-3 -->
 
                 <!-- Start::row-4 -->
@@ -1019,30 +1019,42 @@
                     <div class="col-span-12">
                         <div class="box">
                             <div class="box-header">
-                                <h5 class="box-title">Albums</h5>
+                                <h5 class="box-title">Photos</h5>
                             </div>
                             <div class="box-body space-y-3">
                                 <div class="download-data">
-                                    <button type="button" class="ti-btn ti-btn-primary" id="download-csv">Download CSV</button>
-                                    <button type="button" class="ti-btn ti-btn-primary" id="download-json">Download JSON</button>
-                                    <button type="button" class="ti-btn ti-btn-primary" id="download-xlsx">Download XLSX</button>
-                                    <button type="button" class="ti-btn ti-btn-primary" id="download-pdf">Download PDF</button>
-                                    <button type="button" class="ti-btn ti-btn-primary" id="download-html">Download HTML</button>
+                                    <button type="button" class="ti-btn ti-btn-primary" id="download-csv">Download
+                                        CSV</button>
+                                    <button type="button" class="ti-btn ti-btn-primary" id="download-json">Download
+                                        JSON</button>
+                                    <button type="button" class="ti-btn ti-btn-primary" id="download-xlsx">Download
+                                        XLSX</button>
+                                    <button type="button" class="ti-btn ti-btn-primary" id="download-pdf">Download
+                                        PDF</button>
+                                    <button type="button" class="ti-btn ti-btn-primary" id="download-html">Download
+                                        HTML</button>
                                 </div>
                                 <div class="overflow-hidden table-bordered">
-                                    <table id="download-table" class="ti-custom-table ti-striped-table ti-custom-table-hover">
+                                    <table id="photos-table"
+                                        class="ti-custom-table ti-striped-table ti-custom-table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Title</th>
+                                                <th scope="col">URL</th>
+                                                <th scope="col">Thumbnail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($responseData as $album)
-                                            <tr class="border border-x-0 border-defaultborder album-row">
-                                                <td>{{ $album['id'] }}</td>
-                                                <td>{!! '<a href="' . route('album.photos', ['id' => $album['id']]) . '">' . $album['title'] . '</a>' !!}</td>
-                                            </tr>
+                                            @foreach ($photos as $photo)
+                                                <tr class="border border-x-0 border-defaultborder album-row">
+                                                    <td>{{ $photo['id'] }}</td>
+                                                    <td>{{ $photo['title'] }}</td>
+                                                    <td><a href="{{ $photo['url'] }}"
+                                                            target="_blank">{{ $photo['url'] }}</a></td>
+                                                    <td><img src="{{ $photo['thumbnailUrl'] }}" alt="Thumbnail"
+                                                            style="max-width: 100px;"></td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -1051,7 +1063,9 @@
                         </div>
                     </div>
                 </div>
-                
+
+
+
 
 
             </div>
@@ -1061,7 +1075,7 @@
 
         <!-- SEARCH-MODAL -->
 
-        
+
         <!-- END SEARCH-MODAL -->
 
         <!-- FOOTER -->
@@ -1114,9 +1128,9 @@
     <script src="{{ asset('assets/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
     <!-- Flat Picker JS -->
-    
 
-    
+
+
 
     <script src="{{ asset('assets/libs/xlsx/xlsx.full.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jspdf/jspdf.umd.min.js') }}"></script>
@@ -1128,7 +1142,7 @@
 
 
     <!-- STICKY JS -->
-    
+
 
     <!-- APP JS -->
     <link rel="modulepreload" href="{{ asset('assets/app-cff42aa7.js') }}" />
@@ -1139,53 +1153,83 @@
     <script type="module" src="{{ asset('assets/custom-switcher-508a7845.js') }}"></script>
 
     <!-- END SCRIPTS -->
-   
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var downloadTable = new Tabulator("#download-table", {
-            layout: "fitColumns",
-            pagination: "local",
-            paginationSize: 10,
-            paginationSizeSelector: [5, 10, 15, 20, 25],
-            paginationCounter: "rows",
-            movableColumns: true,
-            reactiveData: true,
-            columns: [
-                { title: "ID", field: "id", sorter: "number" },
-                {
-                    title: "Title",
-                    field: "title",
-                    sorter: "string",
-                    formatter: function (cell, formatterParams, onRendered) {
-                        var rowData = cell.getRow().getData();
-                        return '<a href="' + rowData.photos_link + '">' + rowData.title + '</a>';
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var downloadTable = new Tabulator("#photos-table", {
+                layout: "fitColumns",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [5, 10, 15, 20, 25],
+                paginationCounter: "rows",
+                movableColumns: true,
+                reactiveData: true,
+                columns: [{
+                        title: "ID",
+                        field: "id",
+                        sorter: "number"
+                    },
+                    {
+                        title: "Title",
+                        field: "title",
+                        sorter: "string",
+
+                    } {
+                        title: "URL",
+                        field: "url",
+                        sorter: "string",
+
+                    } {
+                        title: "Thumbnail",
+                        field: "thumbnail",
+                        sorter: "string",
+
                     }
-                }
-            ],
+                ],
+            });
+            document.getElementById("download-csv").addEventListener("click", function() {
+                downloadTable.download("csv", "data.csv");
+            });
+
+            document.getElementById("download-json").addEventListener("click", function() {
+                downloadTable.download("json", "data.json");
+            });
+
+            document.getElementById("download-xlsx").addEventListener("click", function() {
+                downloadTable.download("xlsx", "data.xlsx", {
+                    sheetName: "Albums"
+                });
+            });
+
+            document.getElementById("download-pdf").addEventListener("click", function() {
+                downloadTable.download("pdf", "data.pdf", {
+                    orientation: "landscape",
+                    title: "Album Data"
+                });
+            });
+
+            document.getElementById("download-html").addEventListener("click", function() {
+                downloadTable.download("html", "data.html", {
+                    style: true
+                });
+            });
         });
-    
-        document.getElementById("download-csv").addEventListener("click", function () {
-            downloadTable.download("csv", "data.csv");
-        });
-    
-        document.getElementById("download-json").addEventListener("click", function () {
-            downloadTable.download("json", "data.json");
-        });
-    
-        document.getElementById("download-xlsx").addEventListener("click", function () {
-            downloadTable.download("xlsx", "data.xlsx", { sheetName: "Albums" });
-        });
-    
-        document.getElementById("download-pdf").addEventListener("click", function () {
-            downloadTable.download("pdf", "data.pdf", { orientation: "landscape", title: "Album Data" });
-        });
-    
-        document.getElementById("download-html").addEventListener("click", function () {
-            downloadTable.download("html", "data.html", { style: true });
-        });
-    });
-    </script>
 
 
-</html>
+
+
+
+        <
+        /body>
+
+
+
+
+
+
+
+
+
+
+
+        <
+        /html>
