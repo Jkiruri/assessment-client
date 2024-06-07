@@ -20,7 +20,7 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/Jkiruri/assessment-backend
+    git clone https://github.com/Jkiruri/assessment-client
     cd project-name
     ```
 
@@ -68,7 +68,7 @@ Follow these steps to set up the project locally:
     ```
 
 8. **Add the API URL to the `.env` file:**
-
-    ```bash
+    API_BASE_URL=your api endpoint
+    eg:
     API_BASE_URL=http://127.0.0.1:8000/api/
-    ```
+    
