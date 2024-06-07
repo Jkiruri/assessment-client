@@ -45,7 +45,7 @@
                 <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide"
                     data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "{{ asset('landing/img/figure/bg29-l-1.jpg') }}"}, {"src": "{{ asset('landing/img/figure/bg29-l-2.jpg') }}"}, {"src": "{{ asset('landing/img/figure/bg29-l-3.jpg') }}"}]}'>
                     <div class="fxt-page-switcher">
-                        <a href="login-29.html" class="switcher-text1 active">Login</a>
+                        <a href="{{ url('/login') }}" class="switcher-text1 active">Login</a>
                         <a href="{{ url('/register') }}" class="switcher-text1">Register</a>
                     </div>
                 </div>
